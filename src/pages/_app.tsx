@@ -10,7 +10,6 @@ import LanguageProvider from 'contexts/language/language.provider';
 import CurrencyProvider from 'contexts/currency/currency.provider';
 
 import AppLayout from 'containers/LayoutContainer/AppLayout';
-import { useDeviceType } from 'helper/useDeviceType';
 
 // Language translation files
 import localEn from 'data/translation/en.json';
