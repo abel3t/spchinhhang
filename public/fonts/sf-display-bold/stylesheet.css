@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SF UI Display';
+    src: url('SFUIDisplay-Thin.woff2') format('woff2'),
+        url('SFUIDisplay-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

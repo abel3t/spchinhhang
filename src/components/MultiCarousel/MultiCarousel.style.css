@@ -1,0 +1,27 @@
+.carousel-with-custom-dots {
+  padding-bottom: 100px;
+}
+
+.carousel-with-custom-dots .react-multi-carousel-dot-list {
+  bottom: unset;
+  top: 0;
+  left: 0;
+  right: unset;
+  display: block;
+}
+
+.carousel-with-custom-dots .react-multi-carousel-dot-list .custom-dot {
+  margin-right: 0;
+  margin-bottom: 8px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .carousel-with-custom-dots {
+    padding-bottom: 65px;
+  }
+}
+
+.react-multiple-carousel__arrow {
+  z-index: 10;
+}

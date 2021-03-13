@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SF Pro Rounded';
+    src: url('SFRounded-Ultralight.woff2') format('woff2'),
+        url('SFRounded-Ultralight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
