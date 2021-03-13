@@ -8,10 +8,7 @@ const withSASS = require('@zeit/next-sass');
 
 module.exports = withPlugins([ withOptimizedImages, withFonts, withCSS, withSASS ], {
   cssModules: false,
-  env: {
-    STRIPE_PUBLIC_KEY: 'your_stripe_public_key_here',
-    API_URL: 'https://spchinhhang-api.quynguyenwork.vercel.app/shop/graphql'
-  },
+  env: {},
   webpack: (config, options) => {
     const { isServer } = options;
     config.resolve.modules.push(__dirname);
