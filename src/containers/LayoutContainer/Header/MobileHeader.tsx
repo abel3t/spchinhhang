@@ -22,7 +22,7 @@ import {
 import { FormattedMessage } from 'react-intl';
 import SearchBox from 'components/SearchBox/SearchBox';
 import { SearchContext } from 'contexts/search/search.context';
-import LogoImage from 'image/logo.png';
+import LogoImage from 'image/logo.svg';
 import {
   HOME_PAGE,
   GROCERY_PAGE,
