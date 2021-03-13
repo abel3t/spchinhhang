@@ -12,6 +12,7 @@ import HeaderWrapper, { HeaderLeftSide, Logo, StyledButton, HeaderRight } from '
 import Link from 'next/link';
 
 import { MenuDropDown } from 'components/AllSvgIcon';
+import LogoImage from 'image/logo.svg';
 
 type HeaderProps = {
   style?: any
@@ -85,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({
           <Logo>
             <Link href={HOME_PAGE}>
               <a>
-                <div style={{ color: '#fff' }}>Logo</div>
+                <img src={LogoImage} alt='spchinhhang' width="120px" height="40px"/>
               </a>
             </Link>
           </Logo>
