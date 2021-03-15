@@ -1,25 +1,15 @@
-import React, { useContext } from 'react';
-import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/react-hooks';
+import React from 'react';
 import gql from 'graphql-tag';
-import Sticky from 'react-stickynode';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Popover from 'components/Popover/Popover';
 import CategoryDropdown from 'components/CategoryDropdown/SpringDropdown';
 import { ArrowDropDown, CategoryIcon } from 'components/AllSvgIcon';
-import { SearchContext } from 'contexts/search/search.context';
-import { useStickyState } from 'contexts/app/app.provider';
-import {
-  SidebarMobileLoader,
-  SidebarLoader,
-} from 'components/Placeholder/Placeholder';
 
 import {
   CategoryWrapper,
   PopoverHandler,
   PopoverWrapper,
-  SidebarWrapper,
-  Loading,
+  SidebarWrapper
 } from './Sidebar.style';
 import {
   Accessories,
@@ -51,7 +41,7 @@ import {
   Snacks,
   Tops,
   Wallet,
-  WomenDress,
+  WomenDress
 } from 'components/AllSvgIcon';
 
 const GET_CATEGORIES = gql`
@@ -100,7 +90,7 @@ let iconTypes = {
   Snacks: Snacks,
   Tops: Tops,
   Wallet: Wallet,
-  WomenDress: WomenDress,
+  WomenDress: WomenDress
 };
 
 type SidebarCategoryProps = {
@@ -114,47 +104,12 @@ type SidebarCategoryProps = {
 
 const SidebarCategory: React.FC<SidebarCategoryProps> = ({
   deviceType: { mobile, tablet, desktop },
-  type,
+  type
 }) => {
-  const { state, dispatch } = useContext(SearchContext);
-  const router = useRouter();
-  const { pathname } = router;
-  const { data, loading } = useQuery(GET_CATEGORIES, {
-    variables: { type },
-  });
 
-  const selectedQueries = state && state.category && state.category.split(',');
-  const handleCategorySelection = (slug: string) => {
-    dispatch({
-      type: 'UPDATE',
-      payload: {
-        ...state,
-        page: 1,
-        category: `${slug}`,
-      },
-    });
-    const { page, ...urlState } = state;
-    router.push(
-      {
-        pathname: pathname,
-        query: { ...urlState, category: slug },
-      },
-      {
-        pathname: pathname === '/' ? `${pathname}${type}` : pathname,
-        query: { ...urlState, category: slug },
-      },
-      { shallow: true }
-    );
+  const data = {
+    categories: []
   };
-  const isSidebarSticky = useStickyState('isSidebarSticky');
-
-  if (!data || loading) {
-    if (mobile || tablet) {
-      return <SidebarMobileLoader />;
-    }
-
-    return <SidebarLoader />;
-  }
   return (
     <CategoryWrapper>
       {(mobile || tablet) && (
@@ -162,11 +117,11 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
           handler={
             <PopoverHandler>
               <div>
-                <CategoryIcon />
+                <CategoryIcon/>
                 Select your Category
               </div>
               <div>
-                <ArrowDropDown />
+                <ArrowDropDown/>
               </div>
             </PopoverHandler>
           }
@@ -176,10 +131,8 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
               <CategoryDropdown
                 items={data.categories}
                 iconList={iconTypes}
-                handleCategorySelection={(slug: any) =>
-                  handleCategorySelection(slug)
-                }
-                selectedQueries={selectedQueries}
+                handleCategorySelection={(slug: any) => console.log('slug')}
+                selectedQueries={() => console.log('query')}
               />
             </>
           }
@@ -192,11 +145,11 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
               handler={
                 <PopoverHandler>
                   <div>
-                    <CategoryIcon />
+                    <CategoryIcon/>
                     Select your Category
                   </div>
                   <div>
-                    <ArrowDropDown />
+                    <ArrowDropDown/>
                   </div>
                 </PopoverHandler>
               }
@@ -206,10 +159,9 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                   <CategoryDropdown
                     items={data.categories}
                     iconList={iconTypes}
-                    handleCategorySelection={(slug: any) =>
-                      handleCategorySelection(slug)
+                    handleCategorySelection={(slug: any) => console.log(slug)
                     }
-                    selectedQueries={selectedQueries}
+                    selectedQueries={() => console.log('query')}
                   />
                 </>
               }
@@ -217,18 +169,14 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
           </PopoverWrapper>
 
           <SidebarWrapper>
-            <Sticky enabled={isSidebarSticky} top={110}>
-              <Scrollbars universal autoHide autoHeight autoHeightMax={688}>
-                <CategoryDropdown
-                  items={data.categories}
-                  iconList={iconTypes}
-                  handleCategorySelection={(id: any) =>
-                    handleCategorySelection(id)
-                  }
-                  selectedQueries={selectedQueries}
-                />
-              </Scrollbars>
-            </Sticky>
+            <Scrollbars universal autoHide autoHeight autoHeightMax={688}>
+              <CategoryDropdown
+                items={data.categories}
+                iconList={iconTypes}
+                handleCategorySelection={(id: any) => console.log(id)}
+                selectedQueries={() => console.log('select')}
+              />
+            </Scrollbars>
           </SidebarWrapper>
         </>
       )}

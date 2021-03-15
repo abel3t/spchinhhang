@@ -1,39 +1,37 @@
-import React, { useState } from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import Link from 'next/link'
-import { ProductInformationWrapper, Button } from './ProductInfomation.style'
+import React, { useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { ProductInformationWrapper, Button } from './ProductInfomation.style';
 import {
   ChervonDown,
   ArrowNext,
   ArrowPrev,
-  NextLogin,
-} from '../../components/AllSvgIcon'
-import Carousel from 'react-multi-carousel'
-import ProcessBar from '../../components/Progress/Progress'
-import { Product } from 'interfaces'
-import Rating from '../../components/Rating/Rating'
-import Pagination from '../../components/Pagination/Pagination'
-import UserImage from '../../image/user.jpg'
+  NextLogin
+} from '../../components/AllSvgIcon';
+import ProcessBar from '../../components/Progress/Progress';
+import { Product } from 'interfaces';
+import Rating from '../../components/Rating/Rating';
+import Pagination from '../../components/Pagination/Pagination';
+import UserImage from '../../image/user.jpg';
 
-type ProductInfomationProps = {
+type ProductInformationProps = {
   product: Product | any
   percentage: number
   deviceType: Object
 }
 
-export const ProductInfomation: React.FC<ProductInfomationProps> = ({
+export const ProductInfomation: React.FC<ProductInformationProps> = ({
   product,
-  percentage,
+  percentage
 }) => {
-  const [pagination, setPagination] = useState({
+  const [ pagination, setPagination ] = useState({
     page: 3,
     limit: 50,
-    totalRow: 1,
-  })
-  const [filter, setFilter] = useState({ limit: 10, page: 1 })
+    totalRow: 1
+  });
+  const [ filter, setFilter ] = useState({ limit: 10, page: 1 });
   const handlePageChange = (newPage) => {
-    console.log('newPage', newPage)
-  }
+    console.log('newPage', newPage);
+  };
   return (
     <ProductInformationWrapper>
       <Tabs>
@@ -60,10 +58,10 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
             <p className="my-4 bold">Mô tả</p>
             <p className=" fs-14 lh-24">{product.description}</p>
             <div className="text-center">
-              <img src={product.image} alt={product.title} />
+              <img src={product.image} alt={product.title}/>
             </div>
             <div className="text-center pb-4">
-              <Button title="Xem thêm" icon={<ChervonDown />} />
+              <Button title="Xem thêm" icon={<ChervonDown/>}/>
             </div>
           </div>
         </TabPanel>
@@ -73,14 +71,14 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
               className="col-12 col-md-4"
               style={{
                 borderRight: '1px solid #E8E9EF',
-                borderBottom: '1px solid #E8E9EF',
+                borderBottom: '1px solid #E8E9EF'
               }}
             >
               <div>
                 <div className="px-3 py-3 ">
                   <p className="bold sm-text">95 lượt đánh giá</p>
                   <div className="px-3 py-2">
-                    <Rating />
+                    <Rating/>
                   </div>
                   <p>
                     <span className="fs-14" style={{ color: '#D71F28' }}>
@@ -99,12 +97,12 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
               className="col-12 col-md-4"
               style={{
                 borderRight: '1px solid #E8E9EF',
-                borderBottom: '1px solid #E8E9EF',
+                borderBottom: '1px solid #E8E9EF'
               }}
             >
               <div className="d-flex justify-content-between align-items-center px-3 py-3">
                 <p>5 sao</p>
-                <ProcessBar percentage={percentage} width={275} />
+                <ProcessBar percentage={percentage} width={275}/>
                 <p>61</p>
               </div>
             </div>
@@ -115,7 +113,7 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
                   <Button
                     className="mt-2"
                     title="Viết nhận xét"
-                    icon={<NextLogin />}
+                    icon={<NextLogin/>}
                   />
                 </div>
               </div>
@@ -126,7 +124,7 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
             style={{
               borderBottom: '1px solid #E8E9EF',
               marginLeft: 0,
-              marginRight: 0,
+              marginRight: 0
             }}
           >
             <div className="col-12 col-md-3">
@@ -146,7 +144,7 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
             </div>
             <div className="col-12 col-md-9">
               <div className="d-flex my-3">
-                <Rating />
+                <Rating/>
                 <p className="ml-3">
                   Phiên bản: <span className="bold"> {product.title}</span>
                 </p>
@@ -170,14 +168,14 @@ export const ProductInfomation: React.FC<ProductInfomationProps> = ({
           <div className="row">
             <div className="col-12">
               <div className="px-3 py-3 text-center ">
-                <Pagination />
+                <Pagination/>
               </div>
             </div>
           </div>
         </TabPanel>
       </Tabs>
     </ProductInformationWrapper>
-  )
-}
+  );
+};
 
-export default ProductInfomation
+export default ProductInfomation;

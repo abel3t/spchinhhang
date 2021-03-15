@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import Router, { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
-import gql from 'graphql-tag'
-import { openModal, closeModal } from '@redq/reuse-modal'
-import ProductCard from 'components/ProductCard/ProductCard'
+import React, { useState } from 'react';
+import Router, { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+import gql from 'graphql-tag';
+import { openModal, closeModal } from '@redq/reuse-modal';
+import ProductCard from 'components/ProductCard/ProductCard';
 import {
   ProductsRow,
   ProductsCol,
@@ -11,16 +11,15 @@ import {
   LoaderWrapper,
   LoaderItem,
   ProductCardWrapper
-} from './Products.style'
-import { CURRENCY } from 'helper/constant'
-import { useQuery } from '@apollo/react-hooks'
-import Button from 'components/Button/Button'
-import Loader from 'components/Loader/Loader'
-import Placeholder from 'components/Placeholder/Placeholder'
-import Fade from 'react-reveal/Fade'
-import NoResultFound from 'components/NoResult/NoResult'
+} from './Products.style';
+import { useQuery } from '@apollo/react-hooks';
+import Button from 'components/Button/Button';
+import Loader from 'components/Loader/Loader';
+import Placeholder from 'components/Placeholder/Placeholder';
+import Fade from 'react-reveal/Fade';
+import NoResultFound from 'components/NoResult/NoResult';
 
-const QuickView = dynamic(() => import('../QuickView/QuickView'))
+const QuickView = dynamic(() => import('../QuickView/QuickView'));
 
 const GET_PRODUCTS = gql`
   query getProducts(
@@ -60,7 +59,7 @@ const GET_PRODUCTS = gql`
       hasMore
     }
   }
-`
+`;
 
 type ProductsProps = {
   deviceType?: {
@@ -78,8 +77,8 @@ export const Products: React.FC<ProductsProps> = ({
   fetchLimit = 8,
   loadMore = true
 }) => {
-  const router = useRouter()
-  const [loadingMore, toggleLoading] = useState(false)
+  const router = useRouter();
+  const [ loadingMore, toggleLoading ] = useState(false);
   const { data, error, loading, fetchMore } = useQuery(GET_PRODUCTS, {
     variables: {
       type: type,
@@ -88,22 +87,22 @@ export const Products: React.FC<ProductsProps> = ({
       offset: 0,
       limit: fetchLimit
     }
-  })
+  });
 
   // Quick View Modal
   const handleModalClose = () => {
-    const href = `${router.pathname}`
-    const as = '/'
-    router.push(href, as, { shallow: true })
-    closeModal()
-  }
+    const href = `${router.pathname}`;
+    const as = '/';
+    router.push(href, as, { shallow: true });
+    closeModal();
+  };
 
   const handleQuickViewModal = React.useCallback(
     (modalProps: any, deviceType: any, onModalClose: any) => {
       if (router.pathname === '/product/[slug]') {
-        const as = `/product/${modalProps.slug}`
-        router.push(router.pathname, as)
-        return
+        const as = `/product/${modalProps.slug}`;
+        router.push(router.pathname, as);
+        return;
       }
       openModal({
         show: true,
@@ -125,60 +124,60 @@ export const Products: React.FC<ProductsProps> = ({
             friction: 0
           }
         }
-      })
-      const href = `${router.pathname}?${modalProps.slug}`
-      const as = `/product/${modalProps.slug}`
-      router.push(href, as, { shallow: true })
+      });
+      const href = `${router.pathname}?${modalProps.slug}`;
+      const as = `/product/${modalProps.slug}`;
+      router.push(href, as, { shallow: true });
     },
     []
-  )
+  );
 
   const redirectToProductDetail = React.useCallback((modalProps: any) => {
-    router.push(`/product/[slug]`, `/product/${modalProps.slug}`)
-  }, [])
+    router.push(`/product/[slug]`, `/product/${modalProps.slug}`);
+  }, []);
 
   if (loading) {
     return (
       <LoaderWrapper>
         <LoaderItem>
-          <Placeholder />
+          <Placeholder/>
         </LoaderItem>
         <LoaderItem>
-          <Placeholder />
+          <Placeholder/>
         </LoaderItem>
         <LoaderItem>
-          <Placeholder />
+          <Placeholder/>
         </LoaderItem>
       </LoaderWrapper>
-    )
+    );
   }
 
-  if (error) return <div>{error.message}</div>
+  if (error) return <div>{error.message}</div>;
   if (!data || !data.products || data.products.items.length === 0) {
-    return <NoResultFound />
+    return <NoResultFound/>;
   }
   const handleLoadMore = () => {
-    toggleLoading(true)
+    toggleLoading(true);
     fetchMore({
       variables: {
         offset: Number(data.products.items.length),
         limit: fetchLimit
       },
       updateQuery: (prev, { fetchMoreResult }) => {
-        toggleLoading(false)
+        toggleLoading(false);
         if (!fetchMoreResult) {
-          return prev
+          return prev;
         }
         return {
           products: {
             __typename: prev.products.__typename,
-            items: [...prev.products.items, ...fetchMoreResult.products.items],
+            items: [ ...prev.products.items, ...fetchMoreResult.products.items ],
             hasMore: fetchMoreResult.products.hasMore
           }
-        }
+        };
       }
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -195,7 +194,7 @@ export const Products: React.FC<ProductsProps> = ({
                   description={item.description}
                   image={item.image}
                   weight={item.unit}
-                  currency={CURRENCY}
+                  currency={'VND'}
                   price={item.price}
                   salePrice={item.salePrice}
                   discountInPercent={item.discountInPercent}
@@ -216,7 +215,7 @@ export const Products: React.FC<ProductsProps> = ({
             intlButtonId="loadMoreBtn"
             size="small"
             isLoading={loadingMore}
-            loader={<Loader color="#009E7F" />}
+            loader={<Loader color="#009E7F"/>}
             style={{
               minWidth: 135,
               backgroundColor: '#ffffff',
@@ -227,6 +226,6 @@ export const Products: React.FC<ProductsProps> = ({
         </ButtonWrapper>
       )}
     </>
-  )
-}
-export default Products
+  );
+};
+export default Products;
