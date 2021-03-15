@@ -1,19 +1,13 @@
-import React from 'react'
-import { CartContext } from 'contexts/cart/cart.context'
-import { FormattedMessage } from 'react-intl'
-import Image from 'components/Image/Image'
-import Button from '../Button/Button'
-import InputIncDec from '../InputIncDec/InputIncDec'
-import { CartIcon } from '../AllSvgIcon'
+import React from 'react';
+import Image from 'components/Image/Image';
+import Button from '../Button/Button';
+import { CartIcon } from '../AllSvgIcon';
 import {
   ProductCardWrapper,
   ProductImageWrapper,
-  ProductInfo,
-  SaleTag,
-  // DiscountPercent,
-} from './ProductCard.style'
-import { getProductQuantity, findProductIndex } from '../helpers/utility'
-import DiscountPercent from '../Discount/Discount'
+  ProductInfo
+} from './ProductCard.style';
+import DiscountPercent from '../Discount/Discount';
 
 type ProductCardProps = {
   title: string
@@ -56,22 +50,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onClick,
   ...props
 }) => {
-  const { add, update, products } = React.useContext(CartContext)
-  const index = data && data.id ? findProductIndex(products, data.id) : -1
-  const quantity = getProductQuantity(products, index)
-
   const handleClick = (e: any) => {
-    e.stopPropagation()
-    add(e, data)
-  }
-
-  const handleUpdate = (value: number, e: any) => {
-    if (index === -1 && value === 1) {
-      add(e, data)
-    } else {
-      update(data.id, value)
-    }
-  }
+    console.log('product cart click');
+  };
 
   return (
     <ProductCardWrapper onClick={onClick} className="product-card">
@@ -113,31 +94,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           </div>
 
-          {quantity <= 0 ? (
-            <Button
-              title="Cart"
-              intlButtonId="addCartButton"
-              iconPosition="left"
-              colors="primary"
-              size="small"
-              variant="outlined"
-              className="cart-button"
-              icon={<CartIcon />}
-              onClick={(e) => handleClick(e)}
-            />
-          ) : (
-            <InputIncDec
-              value={quantity}
-              onClick={(e: any) => {
-                e.stopPropagation(onclick)
-              }}
-              // onUpdate={(value: number, e: any) => handleUpdate(value, e)}
-            />
-          )}
+          <Button
+            title="Cart"
+            intlButtonId="addCartButton"
+            iconPosition="left"
+            colors="primary"
+            size="small"
+            variant="outlined"
+            className="cart-button"
+            icon={<CartIcon/>}
+            onClick={(e) => handleClick(e)}
+          />
         </div>
       </ProductInfo>
     </ProductCardWrapper>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { withApollo } from 'helper/apollo';
 
 import { openModal, Modal } from '@redq/reuse-modal';
 import LocationModal from 'containers/LocationModal/LocationModal';
@@ -103,4 +102,4 @@ function HomePage({ deviceType }) {
   );
 }
 
-export default withApollo(HomePage);
+export default HomePage;

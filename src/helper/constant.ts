@@ -1,2 +1,0 @@
-/************ CONSTANTS ***********/
-export const CURRENCY = '$';

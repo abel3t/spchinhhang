@@ -2,9 +2,6 @@ import React from 'react';
 import App from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
-import { StickyProvider } from 'contexts/app/app.provider';
-import { SearchProvider } from 'contexts/search/search.provider';
-
 import AppLayout from 'layouts/AppLayout';
 
 // External CSS import here
@@ -26,16 +23,12 @@ export default function ExtendedApp({
   const desktop = useMedia('(min-width: 992px)');
   return (
     <ThemeProvider theme={theme}>
-      <SearchProvider query={query}>
-        <StickyProvider>
-          <>
-            <AppLayout deviceType={{ mobile, tablet, desktop }}>
-              <Component {...pageProps} deviceType={{ mobile, tablet, desktop }}/>
-            </AppLayout>
-            <GlobalStyle/>
-          </>
-        </StickyProvider>
-      </SearchProvider>
+      <>
+        <AppLayout deviceType={{ mobile, tablet, desktop }}>
+          <Component {...pageProps} deviceType={{ mobile, tablet, desktop }}/>
+        </AppLayout>
+        <GlobalStyle/>
+      </>
     </ThemeProvider>
   );
 }

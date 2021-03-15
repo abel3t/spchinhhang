@@ -39,12 +39,8 @@ import {
 import ReadMore from 'components/Truncate/Truncate';
 import CarouselWithCustomDots from 'components/MultiCarousel/MultiCarousel';
 import Rating from 'components/Rating/Rating';
-import Products from 'containers/Products/Products';
 import DiscountPolicy from 'containers/DiscountPolicy/DiscountPolicy';
-import { CURRENCY } from 'helper/constant';
-import { findProductIndex, getProductQuantity } from 'helper/utility';
 import { Product } from 'interfaces';
-import { FormattedMessage } from 'react-intl';
 import SaleLevel50 from 'image/sale_level_50.png';
 import GiftIcon from 'image/ic_gift.svg';
 import ProductInformation from '../ProductInformation/ProductInfomation';
@@ -171,12 +167,12 @@ const ProductDetails: React.FunctionComponent<ProdutDetailsProps> = ({
             <>
               <ProductPriceWrapper className="row-between">
                 <ProductRetailPrice>
-                  <Price>{formatter(currency).format(product.price)} / {product.unit}</Price>
+                  <Price>100K</Price>
                   <PriceDescription>Giá lẻ</PriceDescription>
                 </ProductRetailPrice>
                 <VerticalDivider className="mx-3" style={{ fontSize: 32 }}/>
                 <ProductWholeSalePrice>
-                  <Price className="hot">{formatter(currency).format(product.price)} /{product.unit}</Price>
+                  <Price className="hot">150k</Price>
                   <PriceDescription>Giá sỉ khi đặt tối thiểu 5 sản phẩm</PriceDescription>
                 </ProductWholeSalePrice>
               </ProductPriceWrapper>
@@ -238,7 +234,7 @@ const ProductDetails: React.FunctionComponent<ProdutDetailsProps> = ({
                 <div>
                   <div>Tổng giá tiền <InfoIcon/></div>
                   <SalePrice className="sub-title">
-                    <strong className="mr-1">{formatter(currency).format(product.price * counter)}</strong>
+                    <strong className="mr-1">120k</strong>
                   </SalePrice>
                   <ProductActions className="d-flex flex-column flex-md-row mt-4">
                     <Button fullwidth icon={<CartIcon/>} iconPosition="left" className="icon-left w-md-50 mr-3 mb-2"
@@ -250,7 +246,7 @@ const ProductDetails: React.FunctionComponent<ProdutDetailsProps> = ({
                   </ProductActions>
                 </div>
               </ProductCartWrapper>
-            </> : <ProductionConfig currency={currency} handleAddToCart={() => console.log('OK')} product={product}
+            </> : <ProductionConfig currency={100} handleAddToCart={() => console.log('OK')} product={product}
                                     counter={counter} onCounterChange={onCounterChange} onBack={() => setTab('info')}/>}
         </ProductInfo>
       </ProductDetailsWrapper>
