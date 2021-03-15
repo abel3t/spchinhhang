@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { openModal, closeModal } from '@redq/reuse-modal';
-import { DrawerProvider } from 'contexts/drawer/drawer.provider';
-import Popover from 'components/Popover/Popover';
 import MobileDrawer from './MobileDrawer';
 import {
   MobileHeaderWrapper,
@@ -32,7 +30,6 @@ import {
   FURNITURE_PAGE,
   BOOK_PAGE
 } from 'constants/navigation';
-import LanguageContext from 'contexts/language/language.context';
 import FavoriteButton from 'components/FavoritePopup/FavoritePopup';
 import {
   SearchIcon,
@@ -61,16 +58,6 @@ type SearchModalProps = {
   handleSearch?: any;
   pathname?: string;
 };
-
-const LanguageArray = [
-  { id: 'ar', label: 'Arabic', intlLangName: 'intlArabic', icon: <SAFlag/> },
-  { id: 'zh', label: 'Chinese', intlLangName: 'intlChinese', icon: <CNFlag/> },
-  { id: 'en', label: 'English', intlLangName: 'intlEnglish', icon: <USFlag/> },
-  { id: 'vi', label: 'Việt Nam', intlLangName: 'intlVietnam', icon: <VNFlag/> },
-  { id: 'de', label: 'German', intlLangName: 'intlGerman', icon: <DEFlag/> },
-  { id: 'he', label: 'Hebrew', intlLangName: 'intlHebrew', icon: <ILFlag/> },
-  { id: 'es', label: 'Spanish', intlLangName: 'intlSpanish', icon: <ESFlag/> }
-];
 
 const SearchModal: React.FC<SearchModalProps> = ({
   state,
@@ -115,16 +102,8 @@ const SearchModal: React.FC<SearchModalProps> = ({
 };
 
 const MobileHeader: React.FC<MobileHeaderProps> = props => {
-  const {
-    state: { lang },
-    toggleLanguage
-  } = useContext<any>(LanguageContext);
-
   const { state, dispatch } = useContext(SearchContext);
   const { className, pathname, closeSearch, deviceType } = props;
-
-  const selectedLangindex = LanguageArray.findIndex(x => x.id === lang);
-
   const handleSearch = (text: string) => {
     dispatch({
       type: 'UPDATE',
@@ -151,68 +130,35 @@ const MobileHeader: React.FC<MobileHeaderProps> = props => {
     });
   };
 
-  const handleToggleLanguage = e => {
-    toggleLanguage(e.target.value);
-    console.log(e.target.value, 'switcher');
-  };
-
-  const LanguageMenu = (item: any) => {
-    return (
-      <LanguageItem
-        onClick={handleToggleLanguage}
-        key={item.id}
-        value={item.id}
-      >
-        <span>{item.icon}</span>
-        <FormattedMessage id={item.intlLangName} defaultMessage={item.label}/>
-      </LanguageItem>
-    );
-  };
-
   const isHomePage = pathname === HOME_PAGE;
 
   return (
-    <DrawerProvider>
-      <MobileHeaderWrapper>
-        <MobileHeaderInnerWrapper className={className}>
-          <DrawerWrapper>
-            <MobileDrawer deviceType={deviceType}/>
-          </DrawerWrapper>
-          <LogoWrapper>
-            <Logo>
-              <Link href={HOME_PAGE}>
-                <a>
-                  <img src={LogoImage} alt='spchinhhang'/>
-                </a>
-              </Link>
-            </Logo>
-          </LogoWrapper>
-          <FavoriteButton className="favorite-btn is-mobile" itemCount={0}/>
-          {/*<LangSwitcher>*/}
-          {/*  <Popover*/}
-          {/*    className='right'*/}
-          {/*    handler={*/}
-          {/*      <SelectedLang>*/}
-          {/*        <Flag style={{ margin: 0 }}>*/}
-          {/*          {LanguageArray[selectedLangindex].icon}*/}
-          {/*        </Flag>*/}
-          {/*      </SelectedLang>*/}
-          {/*    }*/}
-          {/*    content={<>{LanguageArray.map(LanguageMenu)}</>}*/}
-          {/*  />*/}
-          {/*</LangSwitcher> */}
+    <MobileHeaderWrapper>
+      <MobileHeaderInnerWrapper className={className}>
+        <DrawerWrapper>
+          <MobileDrawer deviceType={deviceType}/>
+        </DrawerWrapper>
+        <LogoWrapper>
+          <Logo>
+            <Link href={HOME_PAGE}>
+              <a>
+                <img src={LogoImage} alt='spchinhhang'/>
+              </a>
+            </Link>
+          </Logo>
+        </LogoWrapper>
+        <FavoriteButton className="favorite-btn is-mobile" itemCount={0}/>
 
-          {isHomePage ? (
-            <SearchWrapper
-              onClick={handleSearchModal}
-              className='searchIconWrapper'
-            >
-              <SearchIcon/>
-            </SearchWrapper>
-          ) : null}
-        </MobileHeaderInnerWrapper>
-      </MobileHeaderWrapper>
-    </DrawerProvider>
+        {isHomePage ? (
+          <SearchWrapper
+            onClick={handleSearchModal}
+            className='searchIconWrapper'
+          >
+            <SearchIcon/>
+          </SearchWrapper>
+        ) : null}
+      </MobileHeaderInnerWrapper>
+    </MobileHeaderWrapper>
   );
 };
 

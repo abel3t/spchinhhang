@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/react-hooks';
 import ProductDetails from 'containers/ProductDetails/ProductDetails';
-import ProductDetailsBook from 'containers/ProductDetailsBook/ProductDetailsBook';
 import { Modal } from '@redq/reuse-modal';
 import ProductSingleWrapper, {
   ProductSingleContainer
@@ -59,7 +58,6 @@ const ProductPage: NextPage<Props> = ({ deviceType }) => {
         <ProductSingleWrapper>
           <ProductSingleContainer>
             <ProductDetails product={data.product} deviceType={deviceType}/>
-            {/* <CartPopUp deviceType={deviceType} /> */}
           </ProductSingleContainer>
         </ProductSingleWrapper>
       </Modal>

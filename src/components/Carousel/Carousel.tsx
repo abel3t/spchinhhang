@@ -3,7 +3,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import LanguageContext from 'contexts/language/language.context';
 import { ArrowNext, ArrowPrev } from '../AllSvgIcon';
 
 const ButtonPrev = styled('button')`
@@ -77,39 +76,14 @@ const NextButton = ({ onClick, children }: any) => {
 };
 
 const ButtonGroup = ({ next, previous, isRtl = false }: any) => {
-  const {
-    state: { lang },
-  }: any = useContext(LanguageContext);
-
   return (
     <ButtonGroupWrapper>
-      {
-        (isRtl = (lang === 'ar' || lang === 'he' ? (
-          true
-        ) : (
-          false
-        )) ? (
-          <>
-            <NextButton onClick={() => next()} className='rtl'>
-              <ArrowPrev />
-            </NextButton>
-            <PrevButton onClick={() => previous()}>
-              <ArrowNext />
-            </PrevButton>
-          </>
-        ) : (
-          <>
-            <PrevButton onClick={() => previous()}>
-              <ArrowPrev />
-            </PrevButton>
-            <NextButton onClick={() => next()}>
-              <ArrowNext />
-            </NextButton>
-          </>
-        ))
-      }
-
-      {/* if prop isRtl true swap prev and next btn */}
+      <PrevButton onClick={() => previous()}>
+        <ArrowPrev/>
+      </PrevButton>
+      <NextButton onClick={() => next()}>
+        <ArrowNext/>
+      </NextButton>
     </ButtonGroupWrapper>
   );
 };
@@ -133,16 +107,16 @@ type Props = {
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 3
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 2
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
+    items: 1
+  }
 };
 export default function CustomCarousel({
   data,
@@ -179,7 +153,7 @@ export default function CustomCarousel({
         autoPlaySpeed={3000}
         renderButtonGroupOutside={true}
         additionalTransfrom={0}
-        customButtonGroup={<ButtonGroup />}
+        customButtonGroup={<ButtonGroup/>}
         {...props}
         // use dir ltr when rtl true
       >
@@ -199,7 +173,7 @@ export default function CustomCarousel({
                     width: '100%',
                     height: '100%',
                     display: 'block',
-                    position: 'relative',
+                    position: 'relative'
                   }}
                 />
               </a>
