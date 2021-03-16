@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import Sticky from 'react-stickynode';
 import styled from 'styled-components';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
@@ -17,6 +16,11 @@ const LayoutWrapper = styled.div`
     border-radius: 10px;
     border: 0;
   }
+`;
+
+const HeaderWrapper = styled.div`
+  display: block;
+  min-height: 70px;
 `;
 
 type LayoutProps = {
@@ -41,8 +45,8 @@ const Layout: FunctionComponent<LayoutProps> = ({
   const isHomePage = pathname === HOME_PAGE;
   return (
     <LayoutWrapper className={`layoutWrapper ${className}`}>
-      {(mobile || tablet) && (
-        <Sticky enabled={isSticky} innerZ={1001}>
+      <HeaderWrapper>
+        {(mobile || tablet) && (
           <MobileHeader
             className={`${isSticky ? 'sticky' : 'unSticky'} ${
               isHomePage ? 'home' : ''
@@ -50,11 +54,10 @@ const Layout: FunctionComponent<LayoutProps> = ({
             pathname={pathname}
             deviceType={{ mobile, tablet, desktop }}
           />
-        </Sticky>
-      )}
+        )}
 
-      <Header token="" pathname="" deviceType={{ mobile, tablet, desktop }}/>
-
+        <Header token="" pathname="" deviceType={{ mobile, tablet, desktop }}/>
+      </HeaderWrapper>
       {children}
       <Footer deviceType={{ mobile, tablet, desktop }}/>
     </LayoutWrapper>

@@ -19,7 +19,6 @@ import {
 } from './MobileHeader.style';
 import { FormattedMessage } from 'react-intl';
 import SearchBox from 'components/SearchBox/SearchBox';
-import { SearchContext } from 'contexts/search/search.context';
 import LogoImage from 'image/logo.svg';
 import {
   HOME_PAGE,
@@ -102,34 +101,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
 };
 
 const MobileHeader: React.FC<MobileHeaderProps> = props => {
-  const { state, dispatch } = useContext(SearchContext);
   const { className, pathname, closeSearch, deviceType } = props;
-  const handleSearch = (text: string) => {
-    dispatch({
-      type: 'UPDATE',
-      payload: {
-        ...state,
-        text
-      }
-    });
-  };
-  const handleSearchModal = () => {
-    openModal({
-      show: true,
-      config: {
-        enableResizing: false,
-        disableDragging: true,
-        className: 'search-modal-mobile',
-        width: '100%',
-        height: '100%'
-      },
-      closeOnClickOutside: false,
-      component: SearchModal,
-      componentProps: { state, pathname, handleSearch },
-      closeComponent: () => <div/>
-    });
-  };
-
   const isHomePage = pathname === HOME_PAGE;
 
   return (
@@ -151,7 +123,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = props => {
 
         {isHomePage ? (
           <SearchWrapper
-            onClick={handleSearchModal}
+            onClick={() => console.log('search')}
             className='searchIconWrapper'
           >
             <SearchIcon/>
