@@ -5,21 +5,26 @@ import styled from 'styled-components';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { HOME_PAGE } from 'constants/navigation';
+import { Container } from 'components/container/Container.style';
 
 const MobileHeader = dynamic(() => import('./Header/MobileHeader'), {
   ssr: false
 });
+
 const LayoutWrapper = styled.div`
-  .reuseModalHolder {
-    padding: 0;
-    overflow: auto;
-    border-radius: 10px;
-    border: 0;
-  }
+  background-color: #F4F4F4;
+  margin-top: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+
+const ContentWrapper = styled.main`
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
 `;
 
 const HeaderWrapper = styled.div`
-  display: block;
   min-height: 70px;
 `;
 
@@ -48,9 +53,6 @@ const Layout: FunctionComponent<LayoutProps> = ({
       <HeaderWrapper>
         {(mobile || tablet) && (
           <MobileHeader
-            className={`${isSticky ? 'sticky' : 'unSticky'} ${
-              isHomePage ? 'home' : ''
-            }`}
             pathname={pathname}
             deviceType={{ mobile, tablet, desktop }}
           />
@@ -58,7 +60,12 @@ const Layout: FunctionComponent<LayoutProps> = ({
 
         <Header token="" pathname="" deviceType={{ mobile, tablet, desktop }}/>
       </HeaderWrapper>
-      {children}
+
+      <ContentWrapper>
+        <Container>
+          {children}
+        </Container>
+      </ContentWrapper>
       <Footer deviceType={{ mobile, tablet, desktop }}/>
     </LayoutWrapper>
   );

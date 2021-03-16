@@ -4,11 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import AppLayout from 'layouts/AppLayout';
 
-// External CSS import here
-import 'rc-table/assets/index.css';
-import 'rc-collapse/assets/index.css';
-import 'react-multi-carousel/lib/styles.css';
-import '@redq/reuse-modal/lib/index.css';
+import 'antd/dist/antd.css';
+
 import { GlobalStyle } from 'styled/global.style';
 import { useMedia } from '../utils/useMedia';
 
