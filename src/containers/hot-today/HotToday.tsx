@@ -1,7 +1,18 @@
 import React from 'react';
+import { ContentWrapper, HotTodayWrapper, TitleWrapper } from './HotToday.style';
 
 const HotToday = () => {
-  return (<h2>Hot today</h2>);
+  return (
+    <HotTodayWrapper>
+      <TitleWrapper>
+        hello
+      </TitleWrapper>
+
+      <ContentWrapper>
+        hola
+      </ContentWrapper>
+    </HotTodayWrapper>
+  );
 };
 
 export default HotToday;
