@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Router from 'next/router';
 import { openModal } from '@redq/reuse-modal';
 import SearchBox from 'components/SearchBox/SearchBox';
-import FavoriteButton from 'components/FavoritePopup/FavoritePopup';
 
 import { HOME_PAGE } from 'constants/navigation';
 import HeaderWrapper, { HeaderLeftSide, Logo, StyledButton, HeaderRight } from './Header.style';
@@ -95,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({
               </StyledButton>
             </>
           )}
-          <FavoriteButton className='favorite-btn' itemCount={0}/>
+          
         </HeaderRight>
       </HeaderWrapper>
     </>

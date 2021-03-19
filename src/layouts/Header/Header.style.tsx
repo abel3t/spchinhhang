@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import Buttons from '../../components/Button/Button';
+import { Button } from 'antd';
 
 const positionAnim = keyframes`
   from {
@@ -277,8 +277,8 @@ const HeaderRight = styled.div`
     }
   }
 `;
-const Button = styled(Buttons)``;
-const StyledButton = styled.button`
+
+const StyledButton = styled(Button)`
   background: #ffffff;
   border: 1px solid #d71f28;
   box-sizing: border-box;

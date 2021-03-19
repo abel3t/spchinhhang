@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { openModal } from '@redq/reuse-modal';
-import Drawer from 'components/Drawer/Drawer';
+import { Drawer } from 'antd';
 import {
   HamburgerIcon,
   DrawerClose

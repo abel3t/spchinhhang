@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Modal } from '@redq/reuse-modal';
 import SiteFooter from 'components/SiteFooter/SiteFooter';
 import Accordion from 'components/Accordion/Accordion';
-import { FormattedMessage } from 'react-intl';
 
 const accor = [
   {
@@ -83,11 +82,7 @@ export default function () {
         </HelpPageContainer>
 
         <SiteFooter style={{ marginTop: 50 }}>
-          <FormattedMessage
-            id='siteFooter'
-            defaultMessage='spchinhhang is a product of'
-          />
-          &nbsp; <a href='#'>Redq, Inc.</a>
+          Product of Abel Tran
         </SiteFooter>
       </HelpPageWrapper>
     </Modal>

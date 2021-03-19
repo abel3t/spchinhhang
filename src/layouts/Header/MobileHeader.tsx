@@ -17,7 +17,6 @@ import {
   LangSwitcher,
   Flag
 } from './MobileHeader.style';
-import { FormattedMessage } from 'react-intl';
 import SearchBox from 'components/SearchBox/SearchBox';
 import LogoImage from 'image/logo.svg';
 import {
@@ -29,17 +28,9 @@ import {
   FURNITURE_PAGE,
   BOOK_PAGE
 } from 'constants/navigation';
-import FavoriteButton from 'components/FavoritePopup/FavoritePopup';
 import {
   SearchIcon,
-  LongArrowLeft,
-  DEFlag,
-  CNFlag,
-  USFlag,
-  ILFlag,
-  VNFlag,
-  ESFlag,
-  SAFlag
+  LongArrowLeft
 } from 'components/AllSvgIcon';
 
 type MobileHeaderProps = {
@@ -107,9 +98,8 @@ const MobileHeader: React.FC<MobileHeaderProps> = props => {
   return (
     <MobileHeaderWrapper>
       <MobileHeaderInnerWrapper className={className}>
-        <DrawerWrapper>
-          <MobileDrawer deviceType={deviceType}/>
-        </DrawerWrapper>
+
+        <MobileDrawer deviceType={deviceType}/>
         <LogoWrapper>
           <Logo>
             <Link href={HOME_PAGE}>
@@ -119,7 +109,6 @@ const MobileHeader: React.FC<MobileHeaderProps> = props => {
             </Link>
           </Logo>
         </LogoWrapper>
-        <FavoriteButton className="favorite-btn is-mobile" itemCount={0}/>
 
         {isHomePage ? (
           <SearchWrapper

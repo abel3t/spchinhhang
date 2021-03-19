@@ -1,6 +1,5 @@
 import React from 'react';
 import { SearchBox, SearchButton, SearchInputWrapper } from './SearchBox.style';
-import { FormattedMessage } from 'react-intl';
 
 type InputProps = {
   type?: string;
@@ -31,7 +30,7 @@ const InputSearch: React.FC<InputProps & any> = ({
   onFocus,
   bordered,
   showSvg,
-  inputClass,
+  inputClass
 }) => {
   return (
     <>
@@ -53,19 +52,16 @@ const InputSearch: React.FC<InputProps & any> = ({
             </span>
           )}
 
-          <FormattedMessage id='searchPlaceholder' defaultMessage={placeholder}>
-            {placeholder => (
-              <SearchBox
-                type={type}
-                value={value}
-                placeholder={placeholder}
-                onChange={onChange}
-                onFocus={onFocus}
-                onKeyPress={onKeyPress}
-                onBlur={onBlur}
-              />
-            )}
-          </FormattedMessage>
+          <SearchBox
+            type={type}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+            onFocus={onFocus}
+            onKeyPress={onKeyPress}
+            onBlur={onBlur}
+          />
+          )}
           {showSvg !== true ? (
             <SearchButton onClick={onClick}>
               {buttonIcon}

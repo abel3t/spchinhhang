@@ -8,7 +8,7 @@ export const HotTodayWrapper = styled.div`
 `;
 
 export const TitleWrapper = styled.div`
-  border-bottom: #cccccc 1px solid;
+  border-bottom: #ccc 1px solid;
   height: 64px;
 `;
 
