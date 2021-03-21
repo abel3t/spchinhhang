@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import Router from 'next/router';
-import { openModal } from '@redq/reuse-modal';
+import React from 'react';
 import SearchBox from 'components/SearchBox/SearchBox';
 
 import { HOME_PAGE } from 'constants/navigation';
@@ -29,22 +27,6 @@ const Header: React.FC<HeaderProps> = ({
   pathname,
   deviceType
 }) => {
-  const signInOutForm = () => {
-    openModal({
-      show: true,
-      overlayClassName: 'quick-view-overlay',
-      closeOnClickOutside: true,
-      closeComponent: '',
-      transition: { duration: 0.1 },
-      config: {
-        enableResizing: false,
-        disableDragging: true,
-        className: 'quick-view-modal',
-        width: 678,
-        height: 'auto'
-      }
-    });
-  };
 
   return (
     <>
@@ -85,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({
             <>
               <StyledButton
                 className='btn-ads my-2'
-                onClick={signInOutForm}
+                onClick={() => console.log('click')}
                 title='Join'
               >
                 <div className='mx-3 my-2'>
@@ -94,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({
               </StyledButton>
             </>
           )}
-          
+
         </HeaderRight>
       </HeaderWrapper>
     </>

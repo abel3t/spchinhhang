@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import { Button } from 'antd';
+import { Button } from '@material-ui/core';
 
 const positionAnim = keyframes`
   from {

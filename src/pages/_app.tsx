@@ -3,11 +3,12 @@ import App from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import AppLayout from 'layouts/AppLayout';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import 'antd/dist/antd.css';
-
-import { GlobalStyle } from 'styled/global.style';
 import { useMedia } from '../utils/useMedia';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function ExtendedApp({
   Component,
@@ -20,12 +21,10 @@ export default function ExtendedApp({
   const desktop = useMedia('(min-width: 992px)');
   return (
     <ThemeProvider theme={theme}>
-      <>
-        <AppLayout deviceType={{ mobile, tablet, desktop }}>
-          <Component {...pageProps} deviceType={{ mobile, tablet, desktop }}/>
-        </AppLayout>
-        <GlobalStyle/>
-      </>
+      <CssBaseline/>
+      <AppLayout deviceType={{ mobile, tablet, desktop }}>
+        <Component {...pageProps} deviceType={{ mobile, tablet, desktop }}/>
+      </AppLayout>
     </ThemeProvider>
   );
 }

@@ -1,12 +1,11 @@
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
-const withFonts = require('next-fonts');
 const withCSS = require('@zeit/next-css');
 const withSASS = require('@zeit/next-sass');
 
 // next.js configuration
 
-module.exports = withPlugins([ withOptimizedImages, withFonts, withCSS, withSASS ], {
+module.exports = withPlugins([ withOptimizedImages, withCSS, withSASS ], {
   cssModules: false,
   env: {},
   webpack: (config, options) => {

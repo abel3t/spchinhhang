@@ -1,52 +1,26 @@
-import styled, { createGlobalStyle } from 'styled-components'
-import { themeGet } from '@styled-system/theme-get'
-import SFUIDisplayLightWoff2 from 'public/fonts/sf-display/SFUIDisplay-Light.woff2'
-import SFUIDisplayLightWoff from 'public/fonts/sf-display/SFUIDisplay-Light.woff'
-import SFUIDisplayBoldWoff2 from 'public/fonts/sf-display-bold/SFUIDisplay-Bold.woff2'
-import SFUIDisplayBoldWoff from 'public/fonts/sf-display-bold/SFUIDisplay-Bold.woff'
-import SFRoundedWoff2 from 'public/fonts/sf-rounded/SFRounded.woff2'
-import SFRoundedWoff from 'public/fonts/sf-rounded/SFRounded.woff'
-const TIMEOUT = 400
+import styled, { createGlobalStyle } from 'styled-components';
+import { themeGet } from '@styled-system/theme-get';
+
+const TIMEOUT = 400;
 
 export const InjectRTL = styled.div`
   ${({ lang }) =>
-    (lang === 'ar' || lang === 'he') &&
-    `
+          (lang === 'ar' || lang === 'he') &&
+          `
     font-family: 'Cairo', sans-serif;
     `}
-`
+`;
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'SFDisplay';
-    src: url(${SFUIDisplayLightWoff2}) format('woff2'),
-        url(${SFUIDisplayLightWoff}) format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-      font-family: 'SFDisplay-Bold';
-      src: url(${SFUIDisplayBoldWoff2}) format('woff2'),
-          url(${SFUIDisplayBoldWoff}) format('woff');
-      font-weight: normal;
-      font-style: normal;
-  }
-
-  @font-face {
-      font-family: 'SFRounded';
-      src: url(${SFRoundedWoff2}) format('woff2'),
-          url(${SFRoundedWoff}) format('woff');
-      font-weight: normal;
-      font-style: normal;
-  }
   html {
     box-sizing: border-box;
   }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  body{
+
+  body {
     margin: 0;
     font-family: ${themeGet('fontFamily.0', 'sans-serif')};
     font-size: 14px;
@@ -72,27 +46,30 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  h1,h2,h3,h4,h5,h6  {
+  h1, h2, h3, h4, h5, h6 {
     font-family: ${themeGet('fontFamily.1', 'sans-serif')};
     margin: 0;
   }
 
-  p,a,span,button,li,div  {
+  p, a, span, button, li, div {
     font-family: ${themeGet('fontFamily.0', 'sans-serif')};
     margin: 0;
   }
+
   strong, .bold {
     font-family: ${themeGet('fontFamily.2', 'sans-serif')};
   }
-  ul{
+
+  ul {
     margin: 0;
     padding: 0;
   }
-  li{
+
+  li {
     list-style: none;
   }
 
-  a{
+  a {
     text-decoration: none;
   }
 
@@ -110,14 +87,14 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden !important;
     white-space: normal !important;
   }
-  
+
   .ellipsis-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .ellipsis-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -125,15 +102,16 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
 
-  .quick-view-overlay{
-    background-color: rgba(0,0,0,.5)
+  .quick-view-overlay {
+    background-color: rgba(0, 0, 0, .5)
   }
 
   .add-address-modal,
-  .add-contact-modal{
-    box-shadow: 0 10px 40px rgba(0,0,0,0.16);
+  .add-contact-modal {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.16);
     border-radius: 3px !important;
-    .innerRndComponent{
+
+    .innerRndComponent {
       width: 100%;
       padding: 30px;
       height: auto;
@@ -143,14 +121,14 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .search-modal-mobile{
-    transform: none!important;
-    max-width: none!important;
-    max-height: none!important;
-    top: 0!important;
-    left: 0!important;
+  .search-modal-mobile {
+    transform: none !important;
+    max-width: none !important;
+    max-height: none !important;
+    top: 0 !important;
+    left: 0 !important;
     background: transparent;
-    border-radius: 0!important;
+    border-radius: 0 !important;
   }
 
 
@@ -158,61 +136,67 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0;
     transform: translate3d(0, 20px, 0);
   }
+
   .page-transition-enter-active {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     transition: opacity ${TIMEOUT}ms, transform ${TIMEOUT}ms;
   }
+
   .page-transition-exit {
     opacity: 1;
   }
+
   .page-transition-exit-active {
     opacity: 0;
     transition: opacity ${TIMEOUT}ms;
   }
+
   .loading-indicator-appear,
   .loading-indicator-enter {
     opacity: 0;
   }
+
   .loading-indicator-appear-active,
   .loading-indicator-enter-active {
     opacity: 1;
     transition: opacity ${TIMEOUT}ms;
   }
 
-  .image-item{
+  .image-item {
     padding: 0 15px;
   }
 
   @media (max-width: 1199px) and (min-width: 991px) {
-    .image-item{
+    .image-item {
       padding-left: 10px;
       padding-right: 10px;
     }
   }
+
   @media (max-width: 768px) {
-    .image-item{
+    .image-item {
       padding-left: 7.5px;
       padding-right: 7.5px;
     }
   }
 
-  .rc-table-fixed-header .rc-table-scroll .rc-table-header{
+  .rc-table-fixed-header .rc-table-scroll .rc-table-header {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 
     th {
       padding: 8px 20px;
-      }
+    }
   }
 
-  .drawer-content-wrapper{
+  .drawer-content-wrapper {
     *:focus {
       outline: none;
     }
   }
 
-  .rc-table-content{
+  .rc-table-content {
     border: 0;
   }
 
@@ -227,7 +211,9 @@ export const GlobalStyle = createGlobalStyle`
     &:active {
       outline: none;
     }
+
     position: relative;
+
     .ic-left,
     .ic-right {
       transform: translateY(-50%);
@@ -238,77 +224,81 @@ export const GlobalStyle = createGlobalStyle`
       position: absolute;
       top: 50%;
     }
+
     .ic-left {
       left: 8px;
     }
+
     .ic-right {
       right: 8px;
     }
   }
-  
+
   a {
     color: #0391FF;
+
     &:hover {
       text-decoration: none;
       color: #090e18;
     }
   }
-  
+
   p {
     margin-bottom: 0;
   }
-  
+
   .fa,
   .fas {
     font-weight: 600;
   }
-  
+
   h1,
   .primary-title {
     font-size: 45px;
     font-family: 'SFRounded', sans-serif;
     line-height: 67px;
   }
-  
+
   h2,
   .section-title {
     font-size: 32px;
     line-height: 38px;
   }
-  
+
   h3,
   .sub-title {
     font-size: 24px;
     line-height: 29px;
   }
-  
+
   h4,
   .sm-title {
     font-size: 20px;
     line-height: 28px;
   }
-  
+
   strong,
   .bold {
     font-family: 'SFDisplay-Bold', sans-serif;
     font-weight: 400;
   }
-  
+
   .sm-text {
     font-size: 16px;
   }
-  
+
   .primary-text {
     color: #eb2025;
   }
-  
+
   .secondary-text {
     color: #686464;
   }
+
   .body-text {
     color: #090e18;
   }
-  
+
   .black-btn {
     background-color: #090e18;
     border-radius: 10px;
@@ -322,13 +312,13 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
     outline: none;
   }
-  
+
   .ghost-btn {
     background-color: transparent;
     border: 0;
     outline: none;
   }
-  
+
   .title-divider {
     height: 1px;
     width: 80px;
@@ -336,35 +326,41 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #eb2025;
     margin-top: 16px;
   }
-  
+
   .lh-32 {
     line-height: 32px;
   }
-  
+
   .lh-24 {
     line-height: 24px;
   }
-  
+
   .lh-20 {
     line-height: 20px;
   }
-  .lh-17{
+
+  .lh-17 {
     line-height: 17px;
   }
+
   .sub-feature {
     color: #eb2025;
   }
+
   .fs-20 {
     font-size: 20px;
   }
+
   .pb-20 {
     padding-bottom: 20px;
   }
-  .fs-14{
-    font-size:14px;
+
+  .fs-14 {
+    font-size: 14px;
   }
-  .fs-13{
-    font-size:13px;
+
+  .fs-13 {
+    font-size: 13px;
   }
 
   .row-start {
@@ -384,26 +380,31 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: space-between;
   }
+
   .row-center {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .text-lightgray{
+
+  .text-lightgray {
     color: ${themeGet('color.lightgray', '#8E8E93')};
   }
-  
+
   @media screen and (min-width: 576px) {
   }
+
   @media screen and (min-width: 768px) {
   }
+
   @media screen and (min-width: 992px) {
   }
+
   @media screen and (min-width: 1200px) {
     .container {
       max-width: 1200px;
     }
   }
-  
 
-`
+
+`;

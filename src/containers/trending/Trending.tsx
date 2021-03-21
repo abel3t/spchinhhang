@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  TrendingItemWrapper,
   TrendingItemsWrapper,
   TrendingTitleWrapper
 } from './Trending.style';
-import { Image } from 'antd';
 
 type TrendingProps = {
   deviceType?: {

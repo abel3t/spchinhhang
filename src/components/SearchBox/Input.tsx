@@ -61,7 +61,6 @@ const InputSearch: React.FC<InputProps & any> = ({
             onKeyPress={onKeyPress}
             onBlur={onBlur}
           />
-          )}
           {showSvg !== true ? (
             <SearchButton onClick={onClick}>
               {buttonIcon}

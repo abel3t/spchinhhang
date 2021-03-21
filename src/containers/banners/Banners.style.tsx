@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Carousel from 'react-material-ui-carousel';
 
 export const BannersWrapper = styled.div`
   display: flex;
@@ -6,8 +7,14 @@ export const BannersWrapper = styled.div`
   overflow: hidden;
   width: 100%;
 
-  .ant-carousel {
-    height: 274px;
-    max-width: 1270px;
+  .slick-slider {
+    width: 100%;
+    background: antiquewhite;;
   }
+`;
+
+export const StyledCarousel = styled(Carousel)`
+  min-width: 100%;
+  min-height: 100%;
+  background: antiquewhite;
 `;

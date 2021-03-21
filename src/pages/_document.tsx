@@ -38,6 +38,7 @@ export default class CustomDocument extends Document {
       <Html>
         <Head>
           <meta name="description" content="spchinhhang"/>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDPZC2NF21"></script>
           <script
             dangerouslySetInnerHTML={{

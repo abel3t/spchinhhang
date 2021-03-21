@@ -65,14 +65,6 @@ const Search: React.FC<SearchBoxProps> = ({
     handleSearch(event.target.value);
   };
 
-  const ucwords = (str: string) => {
-    const newString = str.replace(/\//g, '');
-    const humanString = newString.replace(/-/g, ' ');
-    return (humanString + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
-      return $1.toUpperCase();
-    });
-  };
-
   const setSuggestion = (suggestion: any) => {
     setSearchValue(suggestion);
     setToggleSuggestion(false);
