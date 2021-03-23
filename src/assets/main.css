@@ -1,5 +1,7 @@
 @import './base.css';
 @import './components.css';
+@import '~react-multi-carousel/lib/styles.css';
+
 
 @tailwind base;
 
