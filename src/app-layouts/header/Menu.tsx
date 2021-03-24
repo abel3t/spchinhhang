@@ -17,7 +17,7 @@ export default function Menu() {
                 <span className="sr-only">Workflow</span>
                 <img
                   className="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                  src="/assets/images/logo.svg"
                   alt=""
                 />
               </a>
@@ -582,21 +582,22 @@ export default function Menu() {
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Workflow"
+                    src="/assets/images/logo.svg"
+                    alt=" Workflow"
                   />
                 </div>
                 <div className="-mr-2">
                   <button
-                    type="button"
-                    className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                    className=" bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400
+                             hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset
+                             focus:ring-indigo-500"
                     onClick={() => setOpen(!open)}
                   >
-                    <span className="sr-only">Close menu</span>
+                    <span className=" sr-only">Close menu</span>
                     {/* Heroicon name: outline/x */}
                     <svg
-                      className="h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
+                      className=" h-6 w-6"
+                      xmlns=" http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -807,5 +808,6 @@ export default function Menu() {
         </div>
       </div>
     </>
-  );
+  )
+    ;
 };
