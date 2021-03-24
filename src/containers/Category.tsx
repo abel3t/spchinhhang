@@ -44,7 +44,7 @@ const CarouselCategory = ({ className = '', items }: CarouselCategoryProps) => {
         {
           items.map((item, index) => {
             return (
-              <CategoryCard item={item} index={index}/>
+              <CategoryCard item={item} key={index}/>
             );
           })
         }
@@ -55,11 +55,11 @@ const CarouselCategory = ({ className = '', items }: CarouselCategoryProps) => {
 
 type CategoryCardProps = {
   item: unknown,
-  index: number
+  key: number
 }
-const CategoryCard = ({ item, index }: CategoryCardProps) => {
+const CategoryCard = ({ item, key }: CategoryCardProps) => {
   return (
-    <a href="#" key={index}>
+    <a href="#" key={key}>
       <div>Image {item}</div>
       <span>
         Description
