@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import ProductCard from '../components/ProductCard';
 import Banner from '../containers/Banner';
+import Category from '../containers/Category';
 
 const IndexPage: React.FC<{}> = () => {
   return (
@@ -13,6 +14,8 @@ const IndexPage: React.FC<{}> = () => {
 
       <main>
         <Banner/>
+
+        <Category/>
 
         <div className="flex flex-wrap -mx-4">
           <ProductCard/>
