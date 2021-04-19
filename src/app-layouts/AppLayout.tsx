@@ -7,9 +7,9 @@ const AppLayout: React.FC = ({ children }) => {
   return (
     <>
       <Header/>
-
-      {children}
-
+      <div className="lg:px-24 md:px-12 sm:px-10">
+        {children}
+      </div>
       <Footer/>
     </>
   );

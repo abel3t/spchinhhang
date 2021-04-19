@@ -5,7 +5,7 @@ import Category from '../../components/Category';
 export default function Header() {
   return (
     <>
-      <nav className="relative py-6 bg-primary">
+      <nav className="relative py-6 bg-primary mb-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <a className="text-3xl font-bold leading-none" href="#">
             <img className="h-12"
