@@ -3,6 +3,14 @@ import Head from 'next/head';
 import ProductCard from '../components/ProductCard';
 import Banner from '../containers/Banner';
 import Category from '../containers/Category';
+import { Grid } from '@material-ui/core';
+
+import styled from 'styled-components';
+
+const ProductWrapper = styled(Grid)`
+  background-color: #fff;
+  padding: 0;
+`;
 
 const IndexPage: React.FC<{}> = () => {
   return (
@@ -15,18 +23,18 @@ const IndexPage: React.FC<{}> = () => {
       <main>
         <Banner/>
 
-        <Category/>
+        <ProductWrapper container spacing={1}>
+          {
+            [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ].map((_, index) => {
+              return (
+                <Grid item key={index} xs={3} md={2}>
+                  <ProductCard/>
+                </Grid>
+              );
+            })
+          }
+        </ProductWrapper>
 
-        <div className="flex flex-wrap -mx-4">
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-          <ProductCard/>
-        </div>
       </main>
     </>
   );

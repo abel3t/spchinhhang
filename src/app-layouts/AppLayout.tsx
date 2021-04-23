@@ -1,15 +1,24 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import Header from './header/Header';
 import Footer from './Footer';
+
+const BodyWrapper = styled.div`
+  background-color: #F4F4F4;
+  padding: 15px 100px;
+`;
 
 const AppLayout: React.FC = ({ children }) => {
   return (
     <>
       <Header/>
-      <div className="lg:px-24 md:px-12 sm:px-10">
+
+      <BodyWrapper>
         {children}
-      </div>
+      </BodyWrapper>
+
       <Footer/>
     </>
   );

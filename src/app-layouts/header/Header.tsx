@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
-import AutoComplete from 'components/AutoComplete';
-import Category from '../../components/Category';
+import styled from 'styled-components';
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
+import { theme } from 'styles';
 
 export default function Header() {
   return (
-    <>
-      <nav className="relative py-6 bg-primary mb-4">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <a className="text-3xl font-bold leading-none" href="#">
-            <img className="h-12"
-                 src="https://spchinhhang.s3-ap-southeast-1.amazonaws.com/logo.svg" alt=""
-                 width="100px"/>
-          </a>
-
-          <Category/>
-
-          <AutoComplete/>
-          <a
-            className="hidden lg:inline-block py-2 px-6 bg-primaryBold hover:bg-blue-700 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-200"
-            href="#">Liên hệ quảng cáo</a>
-        </div>
-      </nav>
-    </>
+    <Wrapper>
+      <StyledAppBar position="static">
+        < Toolbar>
+          < IconButton edge="start" color="inherit" aria-label="menu">
+            <Logo/>
+          </IconButton>
+          <Input placeholder="Tìm kiếm" className="appbar__logo"/>
+          <Button color="inherit" className="appbar__button">Liên hệ quảng cáo</Button>
+        </Toolbar>
+      </StyledAppBar>
+    </Wrapper>
   );
 }
 
@@ -34,3 +34,22 @@ const Logo = () => {
     />
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const StyledAppBar = styled(AppBar)`
+  .appbar {
+    &__logo {
+      flex-grow: 1;
+    }
+
+    &__button {
+      margin-right: 2px;
+    }
+  }
+`;
