@@ -1,10 +1,20 @@
 <template>
   <div>
     <Header />
-    <nuxt />
+
+    <div class="content">
+      <nuxt />
+    </div>
+
     <Footer />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.content {
+  padding: 3%;
+}
+</style>
 
 <script lang="ts">
 import Vue from "vue";
