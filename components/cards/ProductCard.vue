@@ -1,5 +1,5 @@
 <template>
-    <div  class="lg:w-1/4 md:w-1/2 p-4 w-full">
+    <NuxtLink to="products/1"  class="lg:w-1/4 md:w-1/2 p-4 w-full">
       <div class="block relative h-48 rounded overflow-hidden">
         <img :alt="imgAlt" class="object-cover object-center w-full h-full block" :src="url">
       </div>
@@ -7,8 +7,7 @@
         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ title }}</h3>
         <p class="mt-1">{{pricing}}</p>
       </div>
-      <t-button variant="secondary"><NuxtLink to="products/1" >Click me</NuxtLink></t-button>
-    </div>
+    </NuxtLink>
 </template>
 
 <style lang="scss">
