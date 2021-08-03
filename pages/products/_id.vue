@@ -1,5 +1,7 @@
 <template>
-  <h1>
-    Product detail
-  </h1>
+  <div>
+      <t-alert variant="success" show>
+      Something goes wrong
+    </t-alert>
+  </div>
 </template>
